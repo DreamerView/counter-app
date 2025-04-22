@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #c { font-size: 4rem; font-weight: bold; }
+    button { touch-action: manipulation; }
+  </style>
+</head>
+<body class="bg-light container w-100 d-flex flex-column justify-content-center align-items-center min-vh-100 text-center">
+
+  <h1 class="mb-4">🧮 Counter App</h1>
+  <div id="c" class="bg-body rounded-5" style="width:300px;">0</div>
+
+  <div class="d-flex gap-3 mt-4 btn-group">
+    <button data-v="-1" style="width:5rem;height:auto;aspect-ratio:1/1;" class="btn rounded-circle py-3 fs-2 btn-danger btn-lg px-4">−</button>
+    <button data-v="0" class="btn rounded-5 btn-outline-secondary border-0 btn-lg px-4">Reset</button>
+    <button data-v="1" style="width:5rem;height:auto;aspect-ratio:1/1;" class="btn rounded-circle py-3 fs-2 btn-primary btn-lg px-4">+</button>
+  </div>
+
+  <footer class="text-center mt-4 border-top">
+    <p class="pt-4">Built with ❤️ by <strong>Temirkhan</strong></p>
+    <p>Project at <a target="_blank" href="https://github.com/DreamerView/counter-app">GitHub</a></p>
+  </footer>
+
+  <script>
+    let n = 0, d = document.getElementById("c");
+    const r = () => d.textContent = n;
+    const u = v => { n = v ? n + v : 0; r(); };
+
+    document.querySelector(".btn-group").addEventListener("click", e => {
+      const v = e.target.dataset.v;
+      if (v !== undefined) u(+v);
+    });
+
+    document.addEventListener("touchstart", e => e.touches.length > 1 && e.preventDefault(), { passive: false });
+  </script>
+</body>
+</html>
